@@ -14,11 +14,31 @@ class Main {
   public static void main(String[] args) {
     try {
       Service s = new Service();
-      s.addStudent(new Student("Krzysztof", 20));
-      s.addStudent(new Student("Janusz", 40));
-
-      String name = System.console().readLine("Enter student name: ");
-      int age = Integer.parseInt(System.console().readLine("Enter student age: "));
+      
+      //s.addStudent(new Student("Krzysztof", 20));
+      //s.addStudent(new Student("Janusz", 40));
+      String name = "";
+      while(true){
+           name = System.console().readLine("Wpisz imie studenta: ");
+          if(name.matches("[a-zA-Z]+") && !name.contains(" ")){
+            break;
+          }
+          System.out.println("Imie nie moze zawierac cyfr ani spacji");
+      }
+      int age = 0;
+      while(true){
+        try {
+           age = Integer.parseInt(System.console().readLine("Wpisz wiek studenta: "));
+           if(age > 0 && age < 120){
+            break;
+          }
+          System.out.println("Wiek musi byc liczba z przedzialu 1-120");
+        } catch (NumberFormatException e) {
+           System.out.println("Wiek musi byc liczba");
+        }
+      }
+      
+      // int age = Integer.parseInt(System.console().readLine("Wpisz wiek studenta: "));
       s.addStudent(new Student(name, age));
       
       Collection<Student> students = s.getStudents();
