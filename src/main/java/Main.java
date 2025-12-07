@@ -46,6 +46,22 @@ class Main {
             }
             System.out.println("Imie nie moze zawierac cyfr ani spacji");
         }
+        String surname = "";
+        while(true){
+           surname = System.console().readLine("Wpisz nazwisko studenta: ");
+          if(surname.matches("[a-zA-Z]+") && !surname.contains(" ")){
+            break;
+          }
+          System.out.println("Nazwisko nie moze zawierac cyfr ani spacji");
+        }
+        String email = "";
+        while(true){
+           email = System.console().readLine("Wpisz email studenta: ");
+          if(email.contains("@") && email.contains(".")){
+            break;
+          }
+          System.out.println("Email musi zawierac @ i .");
+        }
         int age = 0;
         while(true){
           try {
@@ -60,7 +76,7 @@ class Main {
         }
 
         // int age = Integer.parseInt(System.console().readLine("Wpisz wiek studenta: "));
-        s.addStudent(new Student(name, age));
+        s.addStudent(new Student(name, age, surname, email));
       }
       
       // Collection<Student> students = s.getStudents();
